@@ -1,0 +1,153 @@
+{
+  "genre":"M",
+  "geometry_type": "Line",
+  "label": "Transect",
+  "label_list": "Transects",
+  "display_properties": [
+    "id_inventor",
+    "first_use_date",
+    "base_site_name",
+    "base_site_code",
+    "base_site_description",
+    "methode_prospection",
+    "type_materiaux",
+    "nb_plaques",
+    "milieu_transect",
+    "milieu_bordier",
+    "milieu_mosaique_vegetale",
+    "milieu_homogene",
+    "milieu_anthropique",
+    "milieu_transect_autre",
+    "microhabitat_favorable",
+    "frequentation_humaine"
+    ],
+  "display_list": [
+    "base_site_name",
+    "id_sites_group",
+    "last_visit",
+    "nb_visits"
+  ],
+  "specific": {
+    "id_nomenclature_type_site": {
+      "type_widget": "text",
+      "attribut_label": "Type site",
+      "type_util": "nomenclature",
+      "value": {
+          "code_nomenclature_type": "TYPE_SITE",
+          "cd_nomenclature": "7"
+      },
+      "hidden": true
+    },
+    "base_site_name": {
+        "type_widget": "text",
+        "attribut_label": "Nom du transect",
+        "required": true
+    },
+    "base_site_code": {
+      "type_widget": "text",
+      "attribut_label": "Code du transect",
+      "required": false,
+      "hidden": true
+    },
+    "base_site_description": {
+      "type_widget": "textarea",
+      "attribut_label": "Commentaire" 
+    },
+    "methode_prospection": {
+      "type_widget": "radio",
+      "attribut_label": "Description de la configuration du milieu autour du transect",
+      "values": ["Par plaques uniquement", "Par observation directe uniquement", "Par plaques et observation directe"]
+    },
+    "type_materiaux": {
+      "type_widget": "nomenclature",
+      "attribut_label": "Type de matériaux",
+      "code_nomenclature_type": "TYPE_MATERIAUX",
+      "required": false,
+      "type_util": "nomenclature",
+      "hidden": "({value}) => value.methode_prospection === 'Par observation directe uniquement'"
+       },
+	   "nb_plaques": {
+      "type_widget": "number",
+      "attribut_label": "Nombre de plaques sur le transect",
+      "required": false,
+      "min": 1,
+      "max":99,
+      "value": 1,
+      "hidden": "({value}) => value.methode_prospection === 'Par observation directe uniquement'"
+    },
+    "milieu_transect": {
+      "type_widget": "radio",
+      "attribut_label": "Description de la configuration du milieu autour du transect",
+      "values": ["Milieux bordiers", "Milieux mosaïque végétale", "Milieux structuration végétale homogène", "Milieux Anthropiques"]
+    },
+    "milieu_bordier": {
+      "type_widget": "nomenclature",
+      "attribut_label": "Milieux bordiers",
+      "code_nomenclature_type": "MILIEUX_BORDIERS",
+      "required": false,
+      "type_util": "nomenclature",
+      "hidden": "({value}) => value.milieu_transect != 'Milieux bordiers'"
+    },
+    "milieu_mosaique_vegetale": {
+        "type_widget": "nomenclature",
+        "attribut_label": "Milieux mosaïque végétale basse",
+        "code_nomenclature_type": "MILIEUX_MOSAIQUE",
+        "required": false,
+        "type_util": "nomenclature",
+        "hidden": "({value}) => value.milieu_transect != 'Milieux mosaïque végétale'"
+    },
+    "milieu_homogene": {
+      "type_widget": "nomenclature",
+      "attribut_label": "Milieux structuration végétale homogène",
+      "code_nomenclature_type": "MILIEUX_HOMOGENE",
+      "required": false,
+      "type_util": "nomenclature",
+      "hidden": "({value}) => value.milieu_transect != 'Milieux structuration végétale homogène'"
+    },
+    "milieu_anthropique": {
+      "type_widget": "nomenclature",
+      "attribut_label": "Milieux Anthropiques",
+      "code_nomenclature_type": "MILIEUX_ANTHROPIQUE",
+      "required": false,
+      "type_util": "nomenclature",
+      "hidden": "({value}) => value.milieu_transect != 'Milieux Anthropiques'"
+    },
+    "milieu_transect_autre": {
+      "type_widget": "text",
+      "attribut_label": "Autres (définir)",
+      "hidden": "({value}) => value.milieu_transect != 'Milieux Anthropiques'"
+    },
+    "microhabitat_favorable": {
+      "type_widget": "nomenclature",
+      "attribut_label": "Présence de micro-habitats favorables",
+      "code_nomenclature_type": "MICROHAB_FAVORABLE",
+      "required": false,
+      "type_util": "nomenclature"
+    },
+    "frequentation_humaine": {
+      "type_widget": "nomenclature",
+      "attribut_label": "Fréquentation humaine",
+      "code_nomenclature_type": "FREQUENTATION_HUMAINE",
+      "required": false,
+      "type_util": "nomenclature"
+    },
+    "id_sites_group": {
+      "type_widget": "datalist",
+      "attribut_label": "Aire",
+      "type_util": "sites_group",
+      "keyValue": "id_sites_group",
+      "keyLabel": "sites_group_name",
+      "api": "__MONITORINGS_PATH/list/__MODULE.MODULE_CODE/sites_group?id_module=__MODULE.ID_MODULE",
+      "application": "GeoNature",
+      "required": false,
+      "hidden": false
+      },
+    "nb_visits": {
+      "attribut_label": "Nb. de passages"
+    },
+    "last_visit": {
+      "attribut_label": "Dernier passage",
+      "type_util": "date"
+    }
+  }
+}
