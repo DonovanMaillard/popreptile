@@ -42,7 +42,7 @@
       "values": ["Nombre d'individus observés à vue", "Nombre d'individus observés sur/sous plaques"]
     },
     "type_denombrement": {
-      "type_widget": "checkbox",
+      "type_widget": "radio",
       "attribut_label": "Précision du dénombrement",
       "values": ["Compté", "Estimé"]
     },
