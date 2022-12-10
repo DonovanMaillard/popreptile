@@ -157,9 +157,9 @@
     {
       "type":"MILIEUX_MOSAIQUE_PR",
       "cd_nomenclature": "MM_1",
-      "mnemonique": "ouver",
-      "label_default": "Mosaïque ouvert",
-      "definition_default": "Mosaïque ouvert"
+      "mnemonique": "ouverte",
+      "label_default": "Mosaïque ouverte",
+      "definition_default": "Mosaïque ouverte"
     },
     {
       "type":"MILIEUX_MOSAIQUE_PR",
