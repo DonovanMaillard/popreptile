@@ -52,19 +52,19 @@
       "required": false,
       "min": 0,
       "max": 100,
-      "hidden": "({value}) => value.nombre != 'Compté'"
+      "hidden": "({value}) => value.type_denombrement != 'Compté'"
     },
     "nombre_estime_min": {
       "type_widget": "number",
       "attribut_label": "Nombre minimal (estimé)",
 	    "required": false,
-      "hidden": "({value}) => value.nombre != 'Estimé'"
+      "hidden": "({value}) => value.type_denombrement != 'Estimé'"
     },
     "nombre_estime_max": {
       "type_widget": "number",
       "attribut_label": "Nombre maximal (estimé)",
       "required": false,
-      "hidden": "({value}) => value.nombre != 'Estimé'"
+      "hidden": "({value}) => value.type_denombrement != 'Estimé'"
     },
     "comments": {
       "type_widget": "textarea",
