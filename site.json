@@ -54,7 +54,7 @@
     "methode_prospection": {
       "type_widget": "radio",
       "attribut_label": "Description de la configuration du milieu autour du transect",
-      "values": ["Par plaques uniquement", "Par observation directe uniquement", "Par plaques et observation directe"]
+      "values": ["Par observation directe uniquement", "Par plaques uniquement", "Par plaques et observation directe"]
     },
     "type_materiaux": {
       "type_widget": "nomenclature",
