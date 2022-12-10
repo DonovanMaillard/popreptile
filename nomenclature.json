@@ -275,31 +275,31 @@
     },
     {
       "type":"FREQUENTATION_HUMAINE_PR",
-      "cd_nomenclature": "FH_1",
-      "mnemonique": "Importante",
-      "label_default": "Importante",
-      "definition_default": "Importante"
-    },
-    {
-      "type":"FREQUENTATION_HUMAINE_PR",
-      "cd_nomenclature": "FH_2",
-      "mnemonique": "Moyenne",
-      "label_default": "Moyenne",
-      "definition_default": "Moyenne"
+      "cd_nomenclature": "FH_4",
+      "mnemonique": "4 - Importante",
+      "label_default": "4 - Importante",
+      "definition_default": "4 - Importante"
     },
     {
       "type":"FREQUENTATION_HUMAINE_PR",
       "cd_nomenclature": "FH_3",
-      "mnemonique": "Ponctuelle",
-      "label_default": "Ponctuelle",
-      "definition_default": "Ponctuelle"
+      "mnemonique": "3 - Moyenne",
+      "label_default": "3 - Moyenne",
+      "definition_default": "3 - Moyenne"
     },
     {
       "type":"FREQUENTATION_HUMAINE_PR",
-      "cd_nomenclature": "FH_4",
-      "mnemonique": "Absente_rare",
-      "label_default": "Absente ou rare",
-      "definition_default": "Absente ou rare"
+      "cd_nomenclature": "FH_2",
+      "mnemonique": "2 - Ponctuelle",
+      "label_default": "2 - Ponctuelle",
+      "definition_default": "2 - Ponctuelle"
+    },
+    {
+      "type":"FREQUENTATION_HUMAINE_PR",
+      "cd_nomenclature": "FH_1",
+      "mnemonique": "1 - Absente_rare",
+      "label_default": "1 - Absente ou rare",
+      "definition_default": "1 - Absente ou rare"
     },
     {
       "type":"METEO_PR",
