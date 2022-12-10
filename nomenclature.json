@@ -400,50 +400,50 @@
       "definition_default": "Indéterminé"
     },
     {
-      "type":"HABITAT_POP_REPTILE",
-      "cd_nomenclature": "HABITAT_POP_REPTILE_1",
+      "type":"HABITAT_PR",
+      "cd_nomenclature": "HABITAT_PR_1",
       "mnemonique": "Forêt",
       "label_default": "Forêt",
       "definition_default": "Forêt"
     },
     {
-      "type":"HABITAT_POP_REPTILE",
-      "cd_nomenclature": "HABITAT_POP_REPTILE_2",
+      "type":"HABITAT_PR",
+      "cd_nomenclature": "HABITAT_PR_2",
       "mnemonique": "Buisson_haie",
       "label_default": "Buisson / haie (< 5 m de hauteur)",
       "definition_default": "Buisson / haie (< 5 m de hauteur)"
     },
     {
-      "type":"HABITAT_POP_REPTILE",
-      "cd_nomenclature": "HABITAT_POP_REPTILE_3",
+      "type":"HABITAT_PR",
+      "cd_nomenclature": "HABITAT_PR_3",
       "mnemonique": "Milieu_agricole_1",
       "label_default": "Milieu agricole (prairie, élevage)",
        "definition_default": "Milieu agricole (prairie, élevage)"
     },
     {
-      "type":"HABITAT_POP_REPTILE",
-      "cd_nomenclature": "HABITAT_POP_REPTILE_4",
+      "type":"HABITAT_PR",
+      "cd_nomenclature": "HABITAT_PR_4",
       "mnemonique": "Milieu_agricole_2",
       "label_default": "Milieu agricole (culture, autre)",
       "definition_default": "Milieu agricole (culture, autre)"
     },
     {
-      "type":"HABITAT_POP_REPTILE",
-      "cd_nomenclature": "HABITAT_POP_REPTILE_5",
+      "type":"HABITAT_PR",
+      "cd_nomenclature": "HABITAT_PR_5",
       "mnemonique": "Milieu_ouvert",
       "label_default": "Milieu ouvert non agricole (lande, steppe)",
       "definition_default": "Milieu ouvert non agricole (lande, steppe)"
     },
     {
-      "type":"HABITAT_POP_REPTILE",
-      "cd_nomenclature": "HABITAT_POP_REPTILE_6",
+      "type":"HABITAT_PR",
+      "cd_nomenclature": "HABITAT_PR_6",
       "mnemonique": "Sol_sans_végétation",
       "label_default": "Sol sans végétation (dune, sol rocheux)",
       "definition_default": "Sol sans végétation (dune, sol rocheux)"
     },
     {
-      "type":"HABITAT_POP_REPTILE",
-      "cd_nomenclature": "HABITAT_POP_REPTILE_7",
+      "type":"HABITAT_PR",
+      "cd_nomenclature": "HABITAT_PR_7",
       "mnemonique": "Zone_urbaine",
       "label_default": "Zone urbaine, espace vert",
       "definition_default": "Zone urbaine, espace vert"
