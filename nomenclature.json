@@ -234,9 +234,9 @@
 	  {
       "type":"MILIEUX_ANTHROPIQUE_PR",
       "cd_nomenclature": "MA_4",
-      "mnemonique": "industrielle",
-      "label_default": "industrielle",
-      "definition_default": "industrielle"
+      "mnemonique": "Milieu industriel",
+      "label_default": "Milieu industriel",
+      "definition_default": "Milieu industriel"
     },
 	  {
       "type":"MILIEUX_ANTHROPIQUE_PR",
@@ -244,6 +244,13 @@
       "mnemonique": "stockage/déchets",
       "label_default": "Zones de stockage/déchets",
       "definition_default": "Zones de stockage/déchets"
+    },
+    {
+      "type":"MILIEUX_ANTHROPIQUE_PR",
+      "cd_nomenclature": "MA_6",
+      "mnemonique": "Autre (préciser)",
+      "label_default": "Autre (préciser)",
+      "definition_default": "Autre (préciser)"
     },
     {
       "type":"MICROHAB_FAVORABLE_PR",

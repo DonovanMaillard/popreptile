@@ -6,6 +6,8 @@
   "display_properties": [
     "base_site_name",
     "base_site_code",
+    "id_inventor",
+    "first_use_date",
     "base_site_description",
     "methode_prospection",
     "type_materiaux",
@@ -113,7 +115,7 @@
     "milieu_transect_autre": {
       "type_widget": "text",
       "attribut_label": "Autres (définir)",
-      "hidden": "({value}) => value.milieu_transect != 'Milieux Anthropiques'"
+      "hidden": "({value}) => value.milieu_anthropique != 'Autre (préciser)'"
     },
     "microhabitat_favorable": {
       "type_widget": "nomenclature",
