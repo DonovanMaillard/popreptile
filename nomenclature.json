@@ -353,23 +353,23 @@
     {
       "type":"EXPERTISE_PR",
       "cd_nomenclature": "EXPERTISE_POP_1",
-      "mnemonique": "Débutant",
-      "label_default": "Débutant",
-      "definition_default": "Débutant"
+      "mnemonique": "1 - Débutant",
+      "label_default": "1 - Débutant",
+      "definition_default": "1 - Débutant"
     },
     {
       "type":"EXPERTISE_PR",
       "cd_nomenclature": "EXPERTISE_POP_2",
-      "mnemonique": "Assez expérimenté",
-      "label_default": "Assez expérimenté",
-      "definition_default": "Assez expérimenté"
+      "mnemonique": "2 - Assez expérimenté",
+      "label_default": "2 - Assez expérimenté",
+      "definition_default": "2 - Assez expérimenté"
     },
     {
       "type":"EXPERTISE_PR",
       "cd_nomenclature": "EXPERTISE_POP_3",
-      "mnemonique": "Chevronné",
-      "label_default": "Chevronné",
-      "definition_default": "Chevronné"
+      "mnemonique": "3 - Chevronné",
+      "label_default": "3 - Chevronné",
+      "definition_default": "3 - Chevronné"
     },
     {
       "type":"STADE_VIE_PR",
