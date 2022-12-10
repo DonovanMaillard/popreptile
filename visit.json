@@ -41,7 +41,7 @@
     "id_base_site": {
       "type_widget": "site",
       "required": false,
-      "attribut_label": "Point d'obs."
+      "attribut_label": "Transect"
     },
     "Heure_debut": {
       "type_widget": "time",
@@ -56,14 +56,14 @@
     "meteo": {
       "type_widget": "nomenclature",
       "attribut_label": "Météo",
-      "code_nomenclature_type": "METEO",
+      "code_nomenclature_type": "METEO_PR",
 	    "required": false,
       "type_util": "nomenclature"
     },
     "vent": {
       "type_widget": "nomenclature",
       "attribut_label": "Vent",
-      "code_nomenclature_type": "VENT",
+      "code_nomenclature_type": "VENT_PR",
 	    "required": false,
       "type_util": "nomenclature"    
     },

@@ -4,8 +4,6 @@
   "label": "Transect",
   "label_list": "Transects",
   "display_properties": [
-    "id_inventor",
-    "first_use_date",
     "base_site_name",
     "base_site_code",
     "base_site_description",
@@ -61,7 +59,7 @@
     "type_materiaux": {
       "type_widget": "nomenclature",
       "attribut_label": "Type de matériaux",
-      "code_nomenclature_type": "TYPE_MATERIAUX",
+      "code_nomenclature_type": "TYPE_MATERIAUX_PR",
       "required": false,
       "type_util": "nomenclature",
       "hidden": "({value}) => value.methode_prospection === 'Par observation directe uniquement'"
@@ -83,7 +81,7 @@
     "milieu_bordier": {
       "type_widget": "nomenclature",
       "attribut_label": "Milieux bordiers",
-      "code_nomenclature_type": "MILIEUX_BORDIERS",
+      "code_nomenclature_type": "MILIEUX_BORDIERS_PR",
       "required": false,
       "type_util": "nomenclature",
       "hidden": "({value}) => value.milieu_transect != 'Milieux bordiers'"
@@ -91,7 +89,7 @@
     "milieu_mosaique_vegetale": {
         "type_widget": "nomenclature",
         "attribut_label": "Milieux mosaïque végétale basse",
-        "code_nomenclature_type": "MILIEUX_MOSAIQUE",
+        "code_nomenclature_type": "MILIEUX_MOSAIQUE_PR",
         "required": false,
         "type_util": "nomenclature",
         "hidden": "({value}) => value.milieu_transect != 'Milieux mosaïque végétale'"
@@ -99,7 +97,7 @@
     "milieu_homogene": {
       "type_widget": "nomenclature",
       "attribut_label": "Milieux structuration végétale homogène",
-      "code_nomenclature_type": "MILIEUX_HOMOGENE",
+      "code_nomenclature_type": "MILIEUX_HOMOGENE_PR",
       "required": false,
       "type_util": "nomenclature",
       "hidden": "({value}) => value.milieu_transect != 'Milieux structuration végétale homogène'"
@@ -107,7 +105,7 @@
     "milieu_anthropique": {
       "type_widget": "nomenclature",
       "attribut_label": "Milieux Anthropiques",
-      "code_nomenclature_type": "MILIEUX_ANTHROPIQUE",
+      "code_nomenclature_type": "MILIEUX_ANTHROPIQUE_PR",
       "required": false,
       "type_util": "nomenclature",
       "hidden": "({value}) => value.milieu_transect != 'Milieux Anthropiques'"
@@ -120,14 +118,14 @@
     "microhabitat_favorable": {
       "type_widget": "nomenclature",
       "attribut_label": "Présence de micro-habitats favorables",
-      "code_nomenclature_type": "MICROHAB_FAVORABLE",
+      "code_nomenclature_type": "MICROHAB_FAVORABLE_PR",
       "required": false,
       "type_util": "nomenclature"
     },
     "frequentation_humaine": {
       "type_widget": "nomenclature",
       "attribut_label": "Fréquentation humaine",
-      "code_nomenclature_type": "FREQUENTATION_HUMAINE",
+      "code_nomenclature_type": "FREQUENTATION_HUMAINE_PR",
       "required": false,
       "type_util": "nomenclature"
     },

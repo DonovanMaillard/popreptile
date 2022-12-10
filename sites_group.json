@@ -32,7 +32,7 @@
     "expertise": {
       "type_widget": "nomenclature",
       "attribut_label": "Expertise",
-      "code_nomenclature_type": "EXPERTISE",
+      "code_nomenclature_type": "EXPERTISE_PR",
       "required": false,
       "hidden": false,
       "type_util": "nomenclature"
@@ -57,7 +57,7 @@
     "habitat_principal":{
       "type_widget": "nomenclature",
       "attribut_label": "Expertise",
-      "code_nomenclature_type": "HABITAT_POP_REPTILE",
+      "code_nomenclature_type": "HABITAT_PR",
       "required": false,
       "hidden": false,
       "type_util": "nomenclature"
