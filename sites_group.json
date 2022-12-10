@@ -56,7 +56,7 @@
     },
     "habitat_principal":{
       "type_widget": "nomenclature",
-      "attribut_label": "Expertise",
+      "attribut_label": "Habitat principal",
       "code_nomenclature_type": "HABITAT_PR",
       "required": false,
       "hidden": false,
