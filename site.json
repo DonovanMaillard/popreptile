@@ -1,6 +1,6 @@
 {
   "genre":"M",
-  "geometry_type": "Line",
+  "geometry_type": "LineString",
   "label": "Transect",
   "label_list": "Transects",
   "display_properties": [
