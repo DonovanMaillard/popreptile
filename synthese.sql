@@ -15,7 +15,7 @@
 -- ne pas remplacer cette variable, elle est indispensable pour les scripts d'installations
 -- le module pouvant être installé avec un code différent de l'original
 
-DROP VIEW IF EXISTS gn_monitoring.v_synthese_POPReptile
+DROP VIEW IF EXISTS gn_monitoring.v_synthese_POPReptile;
 
 CREATE OR REPLACE VIEW gn_monitoring.v_synthese_POPReptile
 AS WITH source AS (
