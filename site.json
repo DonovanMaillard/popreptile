@@ -5,6 +5,7 @@
   "label_list": "Transects",
   "display_properties": [
     "base_site_name",
+    "id_sites_group",
     "id_inventor",
     "first_use_date",
     "base_site_description",
@@ -18,7 +19,8 @@
     "milieu_anthropique",
     "milieu_transect_autre",
     "microhabitat_favorable",
-    "frequentation_humaine"
+    "frequentation_humaine",
+    "comment"
     ],
   "display_list": [
     "base_site_name",
