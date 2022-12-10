@@ -5,7 +5,6 @@
   "label_list": "Transects",
   "display_properties": [
     "base_site_name",
-    "base_site_code",
     "id_inventor",
     "first_use_date",
     "base_site_description",
