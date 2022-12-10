@@ -88,7 +88,7 @@
     },
     "milieu_mosaique_vegetale": {
         "type_widget": "nomenclature",
-        "attribut_label": "Milieux mosaïque végétale basse",
+        "attribut_label": "Milieux mosaïque végétale",
         "code_nomenclature_type": "MILIEUX_MOSAIQUE_PR",
         "required": false,
         "type_util": "nomenclature",
