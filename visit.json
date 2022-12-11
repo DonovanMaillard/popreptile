@@ -4,6 +4,7 @@
   "label_list": "Passages",
   "display_properties": [
     "observers",
+    "id_dataset",
     "num_passage",
     "visit_date_min",
     "Heure_debut",
@@ -54,18 +55,16 @@
       "required": true
     },
     "meteo": {
-      "type_widget": "nomenclature",
+      "type_widget": "select",
+      "required": false,
       "attribut_label": "Météo",
-      "code_nomenclature_type": "METEO_PR",
-	    "required": false,
-      "type_util": "nomenclature"
-    },
+      "values": ["Ensoleillé", "Belles éclaircies", "Nuageux prédominant", "Très nuageux", "Orageux", "Pluvieux", "Ciel voilé"]
+    },  
     "vent": {
-      "type_widget": "nomenclature",
+      "type_widget": "select",
+      "required": false,
       "attribut_label": "Vent",
-      "code_nomenclature_type": "VENT_PR",
-	    "required": false,
-      "type_util": "nomenclature"    
+      "values": ["Absence de vent", "Vent faible", "Vent fort"]
     },
     "comments": {
       "type_widget": "textarea",

@@ -30,12 +30,10 @@
       "required": true
     },
     "expertise": {
-      "type_widget": "nomenclature",
+      "type_widget": "select",
+      "required": true,
       "attribut_label": "Expertise",
-      "code_nomenclature_type": "EXPERTISE_PR",
-      "required": false,
-      "hidden": false,
-      "type_util": "nomenclature"
+      "values": ["Débutant", "Assez expérimenté", "Chevronné"]
     },
     "sites_group_name": {
       "type_widget": "text",
@@ -54,13 +52,11 @@
       "attribut_label": "Description",
       "hidden":true
     },
-    "habitat_principal":{
-      "type_widget": "nomenclature",
-      "attribut_label": "Habitat principal",
-      "code_nomenclature_type": "HABITAT_PR",
+    "habitat_principal": {
+      "type_widget": "select",
       "required": false,
-      "hidden": false,
-      "type_util": "nomenclature"
+      "attribut_label": "Habitat principal",
+      "values": ["Forêt", "Buisson / haie (< 5 m de hauteur)", "Milieu agricole (prairie, élevage)", "Milieu agricole (culture, autre)", "Milieu ouvert non agricole (lande, steppe)", "Sol sans végétation (dune, sol rocheux)", "Zone urbaine, espace vert"]
     },
     "comments": {
       "type_widget": "textarea",

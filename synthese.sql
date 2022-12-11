@@ -30,16 +30,32 @@ AS WITH source AS (
     o.id_observation AS entity_source_pk_value,
     v.id_dataset,
     ref_nomenclatures.get_id_nomenclature('METH_OBS'::character varying, '0'::character varying) AS id_nomenclature_obs_meth, 
-    --nullif(json_extract_path(oc.data::json,'id_nomenclature_stade')::text,'null')::integer AS id_nomenclature_life_stage,
-    --nullif(json_extract_path(oc.data::json,'id_nomenclature_sex')::text,'null')::integer AS id_nomenclature_sex,
+    CASE 
+        WHEN json_extract_path(oc.data::json,'stade_vie')::text = 'Adultes' THEN ref_nomenclatures.get_id_nomenclature('STADE_VIE'::character varying, '2'::character varying)
+        WHEN json_extract_path(oc.data::json,'stade_vie')::text IN ('Nouveaux-nés','Juvéniles') THEN ref_nomenclatures.get_id_nomenclature('STADE_VIE'::character varying, '3'::character varying)
+        ELSE ref_nomenclatures.get_id_nomenclature('STADE_VIE'::character varying, '1'::character varying)
+    END AS id_nomenclature_life_stage,
+    ref_nomenclatures.get_id_nomenclature('SEXE'::character varying, '6'::character varying) AS id_nomenclature_sex,
     ref_nomenclatures.get_id_nomenclature('OBJ_DENBR'::character varying, 'IND'::character varying) AS id_nomenclature_obj_count,
-    --nullif(json_extract_path(oc.data::json,'id_nomenclature_typ_denbr')::text, 'null')::integer AS id_nomenclature_type_count,
+    CASE
+        WHEN json_extract_path(oc.data::json,'type_denombrement')::text = 'Compté' THEN ref_nomenclatures.get_id_nomenclature('TYP_DENBR'::character varying, 'Co'::character varying)
+        WHEN json_extract_path(oc.data::json,'type_denombrement')::text = 'Estimé' THEN ref_nomenclatures.get_id_nomenclature('TYP_DENBR'::character varying, 'Es'::character varying)
+        ELSE ref_nomenclatures.get_id_nomenclature('TYP_DENBR'::character varying, 'NSP'::character varying)
+    END AS id_nomenclature_type_count,
     ref_nomenclatures.get_id_nomenclature('STATUT_OBS'::character varying, 'Pr'::character varying) AS id_nomenclature_observation_status,
     ref_nomenclatures.get_id_nomenclature('ETAT_BIO'::character varying, '1'::character varying) as id_nomenclature_bio_condition,
     ref_nomenclatures.get_id_nomenclature('STATUT_SOURCE'::character varying, 'Te'::character varying) AS id_nomenclature_source_status,
     ref_nomenclatures.get_id_nomenclature('TYP_INF_GEO'::character varying, '1'::character varying) AS id_nomenclature_info_geo_type,
-    --nullif(((oc.data::json #> '{count_min}'::text[])::text),'null')::integer AS count_min,
-    --nullif(((oc.data::json #> '{count_max}'::text[])::text),'null')::integer AS count_max,
+    CASE
+        WHEN json_extract_path(oc.data::json,'type_denombrement')::text = 'Compté' THEN (json_extract_path(oc.data::json,'nombre_compte')::text)::integer
+        WHEN json_extract_path(oc.data::json,'type_denombrement')::text = 'Estimé' THEN (json_extract_path(oc.data::json,'nombre_estime_min')::text)::integer
+        ELSE 1
+    END AS count_min,
+    CASE
+        WHEN json_extract_path(oc.data::json,'type_denombrement')::text = 'Compté' THEN (json_extract_path(oc.data::json,'nombre_compte')::text)::integer
+        WHEN json_extract_path(oc.data::json,'type_denombrement')::text = 'Estimé' THEN (json_extract_path(oc.data::json,'nombre_estime_max')::text)::integer
+        ELSE 1
+    END AS count_max,
     o.cd_nom,
     t.nom_complet AS nom_cite,
     alt.altitude_min,
@@ -51,30 +67,39 @@ AS WITH source AS (
     v.visit_date_min AS date_max,
     obs.observers,
     v.id_digitiser,
-    --ref_nomenclatures.get_id_nomenclature('METH_DETERMIN'::character varying, '1'::character varying) AS id_nomenclature_determination_method,
+    ref_nomenclatures.get_id_nomenclature('METH_DETERMIN'::character varying, '0'::character varying) AS id_nomenclature_determination_method,
     v.id_module as id_module,
     v.comments AS comment_context,
     o.comments AS comment_description,
     obs.ids_observers,
     v.id_base_site,
-    v.id_base_visit--, 
-    --json_build_object(
-    --    'aire_etude', tsg.sites_group_name,
-    --    'nom_site', s.base_site_name,
-    --    'milieu_aquatique', ref_nomenclatures.get_nomenclature_label(nullif(json_extract_path(sc.data::json,'milieu_aquatique')::text,'null')::integer, 'fr'),
-    --    'variation_eau', ref_nomenclatures.get_nomenclature_label(nullif(json_extract_path(sc.data::json,'variation_eau')::text,'null')::integer, 'fr'),
-    --    'courant',  ref_nomenclatures.get_nomenclature_label(nullif(json_extract_path(sc.data::json,'courant')::text,'null')::integer, 'fr'),
-    --    'num_passage', json_extract_path(vc.data::json,'num_passage')::text, 
-    --    'accessibilite', (vc.data::json #> '{accessibility}'::text[]),
-    --    'pluviosite', ref_nomenclatures.get_nomenclature_label(nullif(json_extract_path(vc.data::json,'pluviosite')::text,'null')::integer, 'fr'),
-    --    'couverture_nuageuse', ref_nomenclatures.get_nomenclature_label(nullif(json_extract_path(vc.data::json,'couverture_nuageuse')::text,'null')::integer, 'fr'),
-    --    'vent', ref_nomenclatures.get_nomenclature_label(nullif(json_extract_path(vc.data::json,'vent')::text,'null')::integer, 'fr'),
-    --    'turbidite', ref_nomenclatures.get_nomenclature_label(nullif(json_extract_path(vc.data::json,'turbidite')::text,'null')::integer, 'fr'),
-    --    'vegetation_aquatique_principale', ref_nomenclatures.get_nomenclature_label(nullif(json_extract_path(vc.data::json,'vegetation_aquatique_principale')::text,'null')::integer, 'fr'),
-    --    'rives', ref_nomenclatures.get_nomenclature_label(nullif(json_extract_path(vc.data::json,'rives')::text,'null')::integer, 'fr'),
-    --    'habitat_terrestre_environnant', ref_nomenclatures.get_nomenclature_label(nullif(json_extract_path(vc.data::json,'habitat_terrestre_environnant')::text,'null')::integer, 'fr'),
-    --    'activite_humaine', ref_nomenclatures.get_nomenclature_label(nullif(json_extract_path(vc.data::json,'activite_humaine')::text,'null')::integer, 'fr')
-    --    ) as additional_data
+    v.id_base_visit, 
+    json_build_object(
+        'expertise_operateur', json_extract_path(tsg.data::json,'expertise')::text, 
+        'nom_aire', json_extract_path(tsg.data::json,'sites_group_name')::text, 
+        'description_aire', json_extract_path(tsg.data::json,'sites_group_description')::text, 
+        'habitat_principal_aire', json_extract_path(tsg.data::json,'habitat_principal')::text, 
+        'commentaire_aire', json_extract_path(tsg.data::json,'comments')::text, 
+        'nom_transect', json_extract_path(s.data::json,'base_site_name')::text, 
+        'methode_prospection', json_extract_path(sc.data::json,'methode_prospection')::text, 
+        'materiaux_plaques', json_extract_path(sc.data::json,'type_materiaux')::text, 
+        'nombre_plaques', json_extract_path(sc.data::json,'nb_plaques')::text, 
+        'milieu_transect', json_extract_path(sc.data::json,'milieu_transect')::text, 
+        'milieu_bordier', json_extract_path(sc.data::json,'milieu_bordier')::text, 
+        'milieu_mosaique', json_extract_path(sc.data::json,'milieu_mosaique_vegetale')::text, 
+        'milieu_homogene', json_extract_path(sc.data::json,'milieu_homogene')::text, 
+        'milieu_anthropique', json_extract_path(sc.data::json,'milieu_anthropique')::text, 
+        'precision_milieu_anthropique', json_extract_path(sc.data::json,'milieu_transect_autre')::text, 
+        'microhab_favorable', json_extract_path(sc.data::json,'microhabitat_favorable')::text, 
+        'frequentation_humaine_transect', json_extract_path(sc.data::json,'frequentation_humaine')::text, 
+        'commentaire_transect', json_extract_path(sc.data::json,'comment')::text, 
+        'num_passage', json_extract_path(vc.data::json,'num_passage')::text, 
+        'heure_debut', json_extract_path(vc.data::json,'Heure_debut')::text, 
+        'heure_fin', json_extract_path(vc.data::json,'Heure_fin')::text, 
+        'meteo_visite', json_extract_path(vc.data::json,'meteo')::text, 
+        'vent_visite', json_extract_path(vc.data::json,'vent')::text, 
+        'abondance', json_extract_path(oc.data::json,'abondance')::text
+        ) as additional_data
    FROM gn_monitoring.t_base_visits v
      JOIN gn_monitoring.t_visit_complements vc on v.id_base_visit = vc.id_base_visit 
      JOIN gn_monitoring.t_base_sites s ON s.id_base_site = v.id_base_site

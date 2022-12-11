@@ -54,20 +54,30 @@
       "type_widget": "textarea",
       "attribut_label": "Commentaire" 
     },
+    "id_sites_group": {
+      "type_widget": "datalist",
+      "attribut_label": "Aire",
+      "type_util": "sites_group",
+      "keyValue": "id_sites_group",
+      "keyLabel": "sites_group_name",
+      "api": "__MONITORINGS_PATH/list/__MODULE.MODULE_CODE/sites_group?id_module=__MODULE.ID_MODULE",
+      "application": "GeoNature",
+      "required": true,
+      "hidden": false
+    },
     "methode_prospection": {
       "type_widget": "radio",
       "attribut_label": "Méthode de prospection",
       "values": ["Par observation directe uniquement", "Par plaques uniquement", "Par plaques et observation directe"]
     },
     "type_materiaux": {
-      "type_widget": "nomenclature",
-      "attribut_label": "Type de matériaux",
-      "code_nomenclature_type": "TYPE_MATERIAUX_PR",
+      "type_widget": "select",
       "required": false,
-      "type_util": "nomenclature",
-      "hidden": "({value}) => value.methode_prospection === 'Par observation directe uniquement'"
-       },
-	   "nb_plaques": {
+      "attribut_label": "Type de matériaux",
+      "hidden": "({value}) => value.methode_prospection === 'Par observation directe uniquement'",
+      "values": ["Tapis de Carrière", "Fibrociment", "Tôle métallique", "Autre"]
+    },
+	  "nb_plaques": {
       "type_widget": "number",
       "attribut_label": "Nombre de plaques sur le transect",
       "required": false,
@@ -82,67 +92,50 @@
       "values": ["Milieux bordiers", "Milieux mosaïque végétale", "Milieux structuration végétale homogène", "Milieux Anthropiques"]
     },
     "milieu_bordier": {
-      "type_widget": "nomenclature",
-      "attribut_label": "Milieux bordiers",
-      "code_nomenclature_type": "MILIEUX_BORDIERS_PR",
+      "type_widget": "select",
       "required": false,
-      "type_util": "nomenclature",
-      "hidden": "({value}) => value.milieu_transect != 'Milieux bordiers'"
+      "attribut_label": "Milieux bordiers (linéaires)",
+      "hidden": "({value}) => value.milieu_transect != 'Milieux bordiers'",
+      "values": ["Lisière intra-forestière", "Lisière périphérie forestière", "Haie bocagère", "Muret entre parcelle", "Talus entre parcelle", "Bord de chemin ou bord de route", "Voie de chemin de fer", "Bord de canal ou rivière", "Périphérie étang ou mare ou marais"]
     },
     "milieu_mosaique_vegetale": {
-        "type_widget": "nomenclature",
-        "attribut_label": "Milieux mosaïque végétale",
-        "code_nomenclature_type": "MILIEUX_MOSAIQUE_PR",
-        "required": false,
-        "type_util": "nomenclature",
-        "hidden": "({value}) => value.milieu_transect != 'Milieux mosaïque végétale'"
+      "type_widget": "select",
+      "required": false,
+      "attribut_label": "Milieux mosaïque végétale",
+      "hidden": "({value}) => value.milieu_transect != 'Milieux mosaïque végétale'",
+      "values": ["Mosaïque ouverte", "Mosaïque intermédiaire", "Mosaïque fermée"]
     },
     "milieu_homogene": {
-      "type_widget": "nomenclature",
-      "attribut_label": "Milieux structuration végétale homogène",
-      "code_nomenclature_type": "MILIEUX_HOMOGENE_PR",
+      "type_widget": "select",
       "required": false,
-      "type_util": "nomenclature",
-      "hidden": "({value}) => value.milieu_transect != 'Milieux structuration végétale homogène'"
+      "attribut_label": "Milieux à structuration végétale homogène",
+      "hidden": "({value}) => value.milieu_transect != 'Milieux structuration végétale homogène'",
+      "values": ["Milieu fermé arboré (arbre de haut jet)", "Milieu fermé non-arboré (arbuste, arbrisseaux < 4m)", "Milieu ouvert à végétation haute (1-2m, arbrisseaux-sous arbrisseaux)", "Milieu ouvert à végétation moyenne (50cm-1m, arbrisseaux-sous arbrisseaux, herbacées", "Milieu ouvert à végétation basse (herbacée < 50cm) ou absente"]
     },
     "milieu_anthropique": {
-      "type_widget": "nomenclature",
-      "attribut_label": "Milieux Anthropiques",
-      "code_nomenclature_type": "MILIEUX_ANTHROPIQUE_PR",
+      "type_widget": "select",
       "required": false,
-      "type_util": "nomenclature",
-      "hidden": "({value}) => value.milieu_transect != 'Milieux Anthropiques'"
+      "attribut_label": "Milieux Anthropiques",
+      "hidden": "({value}) => value.milieu_transect != 'Milieux Anthropiques'",
+      "values": ["Bâtiments agricoles, infrastructures", "Habitation", "Ruines", "Site industriel", "Zone de stockage/déchets", "Autre (préciser)"]
     },
     "milieu_transect_autre": {
       "type_widget": "text",
-      "attribut_label": "Autres (définir)",
+      "attribut_label": "Autres (préciser)",
       "hidden": "({value}) => value.milieu_anthropique != 'Autre (préciser)'"
     },
     "microhabitat_favorable": {
-      "type_widget": "nomenclature",
-      "attribut_label": "Présence de micro-habitats favorables",
-      "code_nomenclature_type": "MICROHAB_FAVORABLE_PR",
+      "type_widget": "select",
       "required": false,
-      "type_util": "nomenclature"
+      "attribut_label": "Présence de micro-habitats favorables",
+      "values": ["Aucun", "Pierres", "Souches", "Tas de bois"]
     },
     "frequentation_humaine": {
-      "type_widget": "nomenclature",
+      "type_widget": "select",
+      "required": false,
       "attribut_label": "Fréquentation humaine",
-      "code_nomenclature_type": "FREQUENTATION_HUMAINE_PR",
-      "required": false,
-      "type_util": "nomenclature"
+      "values": ["Absente/Rare", "Ponctuelle", "Moyenne", "Importante"]
     },
-    "id_sites_group": {
-      "type_widget": "datalist",
-      "attribut_label": "Aire",
-      "type_util": "sites_group",
-      "keyValue": "id_sites_group",
-      "keyLabel": "sites_group_name",
-      "api": "__MONITORINGS_PATH/list/__MODULE.MODULE_CODE/sites_group?id_module=__MODULE.ID_MODULE",
-      "application": "GeoNature",
-      "required": false,
-      "hidden": false
-      },
     "nb_visits": {
       "attribut_label": "Nb. de passages"
     },
