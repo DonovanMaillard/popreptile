@@ -47,13 +47,13 @@ AS WITH source AS (
     ref_nomenclatures.get_id_nomenclature('STATUT_SOURCE'::character varying, 'Te'::character varying) AS id_nomenclature_source_status,
     ref_nomenclatures.get_id_nomenclature('TYP_INF_GEO'::character varying, '1'::character varying) AS id_nomenclature_info_geo_type,
     CASE
-        WHEN json_extract_path(oc.data::json,'type_denombrement')::text = 'Compté' THEN (json_extract_path(oc.data::json,'nombre_compte')::text)::integer
-        WHEN json_extract_path(oc.data::json,'type_denombrement')::text = 'Estimé' THEN (json_extract_path(oc.data::json,'nombre_estime_min')::text)::integer
+        WHEN json_extract_path(oc.data::json,'type_denombrement')::text = 'Compté' AND nullif(json_extract_path(oc.data::json,'nombre_compte')::text,null)::integer IS NOT NULL THEN nullif(json_extract_path(oc.data::json,'nombre_compte')::text,null)::integer
+        WHEN json_extract_path(oc.data::json,'type_denombrement')::text = 'Estimé' AND nullif(json_extract_path(oc.data::json,'nombre_estime_min')::text,null)::integer IS NOT NULL THEN nullif(json_extract_path(oc.data::json,'nombre_estime_min')::text,null)::integer
         ELSE 1
     END AS count_min,
     CASE
-        WHEN json_extract_path(oc.data::json,'type_denombrement')::text = 'Compté' THEN (json_extract_path(oc.data::json,'nombre_compte')::text)::integer
-        WHEN json_extract_path(oc.data::json,'type_denombrement')::text = 'Estimé' THEN (json_extract_path(oc.data::json,'nombre_estime_max')::text)::integer
+        WHEN json_extract_path(oc.data::json,'type_denombrement')::text = 'Compté' AND nullif(json_extract_path(oc.data::json,'nombre_compte')::text,null)::integer IS NOT NULL THEN nullif(json_extract_path(oc.data::json,'nombre_compte')::text,null)::integer
+        WHEN json_extract_path(oc.data::json,'type_denombrement')::text = 'Estimé' AND nullif(json_extract_path(oc.data::json,'nombre_estime_max')::text,null)::integer IS NOT NULL THEN nullif(json_extract_path(oc.data::json,'nombre_estime_max')::text,null)::integer
         ELSE 1
     END AS count_max,
     o.cd_nom,
@@ -76,11 +76,11 @@ AS WITH source AS (
     v.id_base_visit, 
     json_build_object(
         'expertise_operateur', json_extract_path(tsg.data::json,'expertise')::text, 
-        'nom_aire', json_extract_path(tsg.data::json,'sites_group_name')::text, 
-        'description_aire', json_extract_path(tsg.data::json,'sites_group_description')::text, 
+        'nom_aire', tsg.sites_group_name, 
+        'description_aire', tsg.sites_group_description, 
         'habitat_principal_aire', json_extract_path(tsg.data::json,'habitat_principal')::text, 
-        'commentaire_aire', json_extract_path(tsg.data::json,'comments')::text, 
-        'nom_transect', json_extract_path(s.data::json,'base_site_name')::text, 
+        'commentaire_aire', tsg.comments, 
+        'nom_transect', s.base_site_name, 
         'methode_prospection', json_extract_path(sc.data::json,'methode_prospection')::text, 
         'materiaux_plaques', json_extract_path(sc.data::json,'type_materiaux')::text, 
         'nombre_plaques', json_extract_path(sc.data::json,'nb_plaques')::text, 
