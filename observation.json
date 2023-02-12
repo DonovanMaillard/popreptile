@@ -39,7 +39,7 @@
       "required": true,
       "type_util": "taxonomy",
       "value": {
-        "cd_nome": 186278
+        "cd_nom": 186278
       },
       "hidden":"({value}) => value.presence === 'Non'
     },
@@ -48,6 +48,7 @@
       "required": true,
       "attribut_label": "Stade de vie",
       "values": ["Indéterminé", "Nouveaux-nés", "Juvéniles", "Adultes"],
+      "value": "Indéterminé",
       "hidden":"({value}) => value.presence === 'Non'
     },
     "abondance": {
