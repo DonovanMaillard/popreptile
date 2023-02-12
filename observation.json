@@ -1,8 +1,11 @@
 {
   "description_field_name":"cd_nom",
+  "label": "Observation ou absence",
+  "label_list": "Observations ou absences",
   "genre":"F",
 "display_properties": [
   "cd_nom",
+  "presence",
   "stade_vie",
   "abondance",
   "type_denombrement",
@@ -18,6 +21,13 @@
   "nombre_estime_max"
 ],
   "specific": {
+    "presence": {
+       "type_widget": "radio",
+       "required": true,
+       "attribut_label": "Avez-vous observé des reptiles lors de la prospection",
+       "values": ["Oui", "Non"],
+       "value": "Oui"
+    },
     "cd_nom": {
       "type_widget": "taxonomy",
       "attribut_label": "Espèce observée",
@@ -27,23 +37,30 @@
       "api": "taxref/allnamebylist/__MODULE.ID_LIST_TAXONOMY",
       "application": "TaxHub",
       "required": true,
-      "type_util": "taxonomy"
+      "type_util": "taxonomy",
+      "value": {
+        "cd_nome": 186278
+      },
+      "hidden":"({value}) => value.presence === 'Non'
     },
     "stade_vie": {
       "type_widget": "select",
       "required": true,
       "attribut_label": "Stade de vie",
-      "values": ["Indéterminé", "Nouveaux-nés", "Juvéniles", "Adultes"]
+      "values": ["Indéterminé", "Nouveaux-nés", "Juvéniles", "Adultes"],
+      "hidden":"({value}) => value.presence === 'Non'
     },
     "abondance": {
       "type_widget": "checkbox",
       "attribut_label": "Abondance",
-      "values": ["Nombre d'individus observés à vue", "Nombre d'individus observés sur/sous plaques"]
+      "values": ["Nombre d'individus observés à vue", "Nombre d'individus observés sur/sous plaques"],
+      "hidden":"({value}) => value.presence === 'Non'
     },
     "type_denombrement": {
       "type_widget": "radio",
       "attribut_label": "Précision du dénombrement",
-      "values": ["Compté", "Estimé"]
+      "values": ["Compté", "Estimé"],
+      "hidden":"({value}) => value.presence === 'Non'
     },
     "nombre_compte": {
       "type_widget": "number",
