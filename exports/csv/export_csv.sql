@@ -54,6 +54,7 @@ SELECT
    	v.comments AS commentaire_visite,
     -- Informations sur l'observation
     o.cd_nom AS cd_nom,
+    json_extract_path(oc.data::json,'presence')::text AS presence_reptile,
     t.lb_nom AS nom_latin,
     t.nom_vern AS nom_francais,
     json_extract_path(oc.data::json,'abondance')::text AS abondance,
@@ -111,7 +112,6 @@ GROUP BY 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,18,19,20,21,22,23,24,25,26,27,28
 
 ------------------------------------------------finale --POPReptile analyses------------------------------------------
 -- View: gn_monitoring.v_export_popreptile_analyse
--- TODO
 DROP VIEW IF EXISTS gn_monitoring.v_export_popreptile_analyses;
 
 CREATE OR REPLACE VIEW gn_monitoring.v_export_popreptile_analyses
@@ -139,7 +139,7 @@ SELECT
 	tsg.comments AS commentaire_aire,
     -- Site
     s.base_site_name AS nom_transect,
-   	st_astext(s.geom) AS wkt,
+    st_astext(s.geom) AS wkt,
     st_x(st_centroid(s.geom_local)) AS x_centroid_L93,
     st_y(st_centroid(s.geom_local)) AS y_centroid_L93,
     alt.altitude_min AS altitude_min,
