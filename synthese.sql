@@ -43,7 +43,7 @@ AS WITH source AS (
         ELSE ref_nomenclatures.get_id_nomenclature('TYP_DENBR'::character varying, 'NSP'::character varying)
     END AS id_nomenclature_type_count,
     CASE 
-         WHEN json_extract_path(oc.data::json,'presence')::text=='Oui' THEN ref_nomenclatures.get_id_nomenclature('STATUT_OBS'::character varying, 'Pr'::character varying) 
+         WHEN json_extract_path(oc.data::json,'presence')::text = 'Oui' THEN ref_nomenclatures.get_id_nomenclature('STATUT_OBS'::character varying, 'Pr'::character varying) 
          ELSE ref_nomenclatures.get_id_nomenclature('STATUT_OBS'::character varying, 'No'::character varying)
     END AS id_nomenclature_observation_status,
     ref_nomenclatures.get_id_nomenclature('ETAT_BIO'::character varying, '1'::character varying) as id_nomenclature_bio_condition,
