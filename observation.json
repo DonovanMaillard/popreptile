@@ -41,7 +41,7 @@
       "value": {
         "cd_nom": 186278
       },
-      "hidden":"({value}) => value.presence === 'Non'
+      "hidden":"({value}) => value.presence === 'Non'"
     },
     "stade_vie": {
       "type_widget": "select",
@@ -49,19 +49,19 @@
       "attribut_label": "Stade de vie",
       "values": ["Indéterminé", "Nouveaux-nés", "Juvéniles", "Adultes"],
       "value": "Indéterminé",
-      "hidden":"({value}) => value.presence === 'Non'
+      "hidden":"({value}) => value.presence === 'Non'"
     },
     "abondance": {
       "type_widget": "checkbox",
       "attribut_label": "Abondance",
       "values": ["Nombre d'individus observés à vue", "Nombre d'individus observés sur/sous plaques"],
-      "hidden":"({value}) => value.presence === 'Non'
+      "hidden":"({value}) => value.presence === 'Non'"
     },
     "type_denombrement": {
       "type_widget": "radio",
       "attribut_label": "Précision du dénombrement",
       "values": ["Compté", "Estimé"],
-      "hidden":"({value}) => value.presence === 'Non'
+      "hidden":"({value}) => value.presence === 'Non'"
     },
     "nombre_compte": {
       "type_widget": "number",
