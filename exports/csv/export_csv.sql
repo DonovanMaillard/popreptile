@@ -99,7 +99,7 @@ LEFT JOIN LATERAL ( SELECT array_agg(r.id_role) AS ids_observers,
     WHERE cvo.id_base_visit = v.id_base_visit) obs ON true
 LEFT JOIN LATERAL ref_geo.fct_get_altitude_intersection(s.geom_local) alt(altitude_min, altitude_max) ON true
 LEFT JOIN LATERAL (SELECT ref_nomenclatures.get_nomenclature_label(json_array_elements(vc.data::json #> '{methode_de_prospection}')::text::integer,'fr') AS methodes ) meth ON TRUE
-WHERE m.module_code = 'popreptile'
+WHERE m.module_code = :'module_code'
 GROUP BY 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52
 ;
 
@@ -213,7 +213,7 @@ LEFT JOIN LATERAL ( SELECT array_agg(r.id_role) AS ids_observers,
     WHERE cvo.id_base_visit = v.id_base_visit) obs ON true
 LEFT JOIN LATERAL ref_geo.fct_get_altitude_intersection(s.geom_local) alt(altitude_min, altitude_max) ON true
 LEFT JOIN lateral (SELECT ref_nomenclatures.get_nomenclature_label(json_array_elements(vc.data::json #> '{methode_de_prospection}')::text::integer,'fr') as methodes ) meth on true
-WHERE m.module_code = 'popreptile'
+WHERE m.module_code = :'module_code'
 GROUP BY 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45
 ;
 
