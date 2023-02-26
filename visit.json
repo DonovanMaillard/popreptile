@@ -11,7 +11,6 @@
     "Heure_fin",
     "meteo",
     "vent",
-    "presence_reptile",
     "comments"
   ],
   "display_list": [
@@ -27,7 +26,6 @@
     "Heure_fin",
     "meteo",
     "vent",
-    "presence_reptile",
     "comments"
   ],
   "specific": {
@@ -69,12 +67,6 @@
     "comments": {
       "type_widget": "textarea",
       "attribut_label": "Commentaire"
-    },
-    "presence_reptile": {
-      "type_widget": "radio",
-      "attribut_label": "Présence de reptiles",
-      "required":true,
-      "values": ["Oui", "Non"]
     },
     "visit_date_min": {
       "type_widget": "date",
