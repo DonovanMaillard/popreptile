@@ -1,11 +1,11 @@
 {
   "description_field_name":"cd_nom",
-  "label": "Observation ou absence",
-  "label_list": "Observations ou absences",
+  "label": "observation ou une absence",
+  "label_list": "observations ou des absences",
   "genre":"F",
 "display_properties": [
-  "cd_nom",
   "presence",
+  "cd_nom",
   "stade_vie",
   "abondance",
   "type_denombrement",
