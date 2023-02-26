@@ -38,9 +38,7 @@
       "application": "TaxHub",
       "required": true,
       "type_util": "taxonomy",
-      "value": {
-        "cd_nom": 186278
-      },
+      "value": 186278,
       "hidden":"({value}) => value.presence === 'Non'"
     },
     "stade_vie": {
